@@ -1,11 +1,11 @@
 package com.devsuperior.dslearnbds.entities;
 
 import com.devsuperior.dslearnbds.entities.enums.ResourceType;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Data
 @NoArgsConstructor
@@ -26,4 +26,8 @@ public class Resource {
     @ManyToOne
     @JoinColumn(name = "offer_id")
     private Offer offer;
+
+    @Setter(AccessLevel.NONE)
+    @OneToMany(mappedBy = "resource")
+    private List<Section> sections = new ArrayList<>();
 }
