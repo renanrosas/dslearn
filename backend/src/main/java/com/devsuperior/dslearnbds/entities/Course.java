@@ -1,10 +1,10 @@
 package com.devsuperior.dslearnbds.entities;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Data
 @NoArgsConstructor
@@ -19,4 +19,8 @@ public class Course {
     private String name;
     private String imgUri;
     private String imgGrayUri;
+
+    @Setter(AccessLevel.NONE)
+    @OneToMany(mappedBy = "course")
+    private List<Offer> offers = new ArrayList<>();
 }
