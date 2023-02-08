@@ -1,11 +1,11 @@
 package com.devsuperior.dslearnbds.entities;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import java.time.Instant;
+import java.util.ArrayList;
+import java.util.List;
 
 @Data
 @NoArgsConstructor
@@ -28,4 +28,8 @@ public class Offer {
     @ManyToOne
     @JoinColumn(name = "course_id")
     private Course course;
+
+    @Setter(AccessLevel.NONE)
+    @OneToMany(mappedBy = "offer")
+    private List<Resource> resources = new ArrayList<>();
 }
